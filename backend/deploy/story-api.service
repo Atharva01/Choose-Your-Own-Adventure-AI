@@ -1,0 +1,13 @@
+[Unit]
+Description=Choose Your Own Adventure API
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/opt/story/backend
+EnvironmentFile=/etc/story-api.env
+ExecStart=/opt/story/backend/.venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
